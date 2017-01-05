@@ -8,8 +8,9 @@ exports.search = function(query, next) {
 	if (!err) {
 	    var result = [];
 	    for (var i = 0; i < data.length; i++) {
-		log.info(data[i]);
+		log.info(data[i].title + " / " + query);
 		if (data[i].title.indexOf(query) != -1) {
+		    log.info("match");
 		    result.push(data[i]);
 		}
 	    }
