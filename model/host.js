@@ -70,7 +70,7 @@ exports.save = function(client, data, next) {
 	command = command.substr(0, command.length - 2);
 	values = values.substr(0, values.length - 2);
 
-	command += " " + values + ";";
+	command += ") " + values + ";";
 	console.log(command);
 	execute(client, command, function(err, data) {
 	    return next(err, data);
