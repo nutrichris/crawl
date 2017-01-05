@@ -8,7 +8,7 @@ exports.search = function(query, next) {
 	if (!err) {
 	    var result = [];
 	    for (var i = 0; i < data.length; i++) {
-		if (data[i].title.indexof(query) != -1) {
+		if (data[i].title.indexOf(query) != -1) {
 		    result.push(data[i]);
 		}
 	    }
