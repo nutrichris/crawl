@@ -1,19 +1,24 @@
 var log = require('log4js').getLogger('host');
 
-var mongoose = require('mongoose');
-var mongolastic = require('mongolastic');
+var exports = module.exports = {};
 
-var hostSchema = mongoose.Schema({
-    name: String
-});
-
-var Host = mongoose.model('Host', hostSchema);
-try {
-    mongolastic.registerModel(Host, function(err, res) {
-	log.info("Host model registered in elasticsearch");
-    });
-} catch(err) {
-    log.error(err);
+exports.findOne = function(criteria, next) {
+    exports.find(criteria, next);
 }
 
-module.exports = Host;
+exports.find = function(criteria, next) {
+    var command = "SELECT * FROM hosts WHERE ";
+
+    for (var key in criteria) {
+	if (criteria.hasOwnProperty(key)) {
+	    var obj = criteria[key];
+	    command += key + "=" + obj;
+
+	    command += " AND ";
+	}
+
+    }
+    command = command.substr(0, command.length - 5);
+    log.info(command);
+    return next(null, command);
+};

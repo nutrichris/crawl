@@ -50,10 +50,12 @@ var store = function(data, next) {
 	async.waterfall([
 	    function(cb) {
 		if (err == null && ret == null) {
+/*
 		    var h = new host_model({ name: data.url.host} );
 		    h.save(function(err, saved_host) {
 			return cb(err, saved_host, data);
 		    });
+*/
 		}
 		else if (err == null && ret != null) {
 		    return cb(null, ret, data);
@@ -62,6 +64,8 @@ var store = function(data, next) {
 		}		
 	    },
 	    function(host, data, cb) {
+		return cb(null);
+/*
 		page_model.findOne({
 		    path: data.url.path,
 		    host: host._id
@@ -70,17 +74,20 @@ var store = function(data, next) {
 			var page = {
 			    path: data.url.path,
 			    host: host._id
-			};
+			    };
+
 			var pp = new page_model(page);
 			pp.save(function(err, saved_page) {
 			    return cb(err);
 			});
+
 		    } else if (err == null && ret != null) {
 			return cb(null);
 		    } else {
 			return cb(err);			
 		    }
 		});
+*/
 	    }
 	], function(err) {
 	    return next(err);
