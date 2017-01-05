@@ -15,7 +15,7 @@ var execute = function(client, command, next) {
 	return next(err);
     });
 
-});
+};
 
 exports.findOne = function(client, criteria, next) {
     exports.find(client, criteria, function(err, results) {
