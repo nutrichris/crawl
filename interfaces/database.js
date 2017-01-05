@@ -61,7 +61,7 @@ exports.find = function(table, criteria, next) {
 	}
 	command = command.substr(0, command.length - 5) + ";";
 	log.info(command);
-	execute(client, command, function(err, data) {
+	execute(command, function(err, data) {
 	    return next(err, data);
 	});
     } else {
@@ -87,7 +87,7 @@ exports.save = function(table, data, next) {
 
 	command += ") " + values + ");";
 	console.log(command);
-	execute(client, command, function(err, data) {
+	execute(command, function(err, data) {
 	    return next(err, data);
 	});	
     } else {
