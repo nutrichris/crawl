@@ -51,12 +51,9 @@ var store = function(data, next) {
 	async.waterfall([
 	    function(cb) {
 		if (err == null && ret == null) {
-/*
-		    var h = new host_model({ name: data.url.host} );
-		    h.save(function(err, saved_host) {
-			return cb(err, saved_host, data);
+		    host_model.save(db.client, {name: data.url.host}, function(err, results) {
+			return cb(err, results, data);
 		    });
-*/
 		}
 		else if (err == null && ret != null) {
 		    return cb(null, ret, data);
