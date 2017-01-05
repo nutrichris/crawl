@@ -58,6 +58,7 @@ var store = function(data, next) {
 		else if (err == null && ret != null) {
 		    return cb(null, ret, data);
 		} else {
+		    log.error(err);
 		    return cb("database read fail");
 		}		
 	    },
