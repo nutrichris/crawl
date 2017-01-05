@@ -12,7 +12,7 @@ exports.search = function(req, res, next) {
 		var content = "";
 		for (var i = 0; i < result.length; i++) {
 		    var line = "<a href=\"http://";
-		    line += result[i].name + result[i].path + "\">" + result[i].title + "</a><br/";
+		    line += result[i].name + result[i].path + "\">" + result[i].title + "</a><br/>";
 		    content += line;
 		}
 
