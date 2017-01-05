@@ -4,8 +4,6 @@ var async = require('async');
 var page = require('./page.js');
 
 var db = require('../interfaces/database.js');
-var host_model = require('../model/host.js');
-var page_model = require('../model/page.js');
 
 var exports = module.exports = {};
 
@@ -18,12 +16,12 @@ var blackHosts = ["www.facebook.com", 'plus.google.com'];
 
 
 var find = function(url, next) {
-    host_model.findOne(db.client, { name: url.host }, function(err, ret) {
+    db.findOne('hosts', { name: url.host }, function(err, ret) {
 	if (!err) {
 	    if (ret) {
-		page_model.findOne({
+		db.findOne('pages', {
 		    path: url.path,
-		    host: ret._id
+		    host: ret.id
 		}, function(err, ret_page) {
 		    if (!err) {
 			if (ret_page) {
@@ -47,11 +45,13 @@ var find = function(url, next) {
 
 
 var store = function(data, next) {
-    host_model.findOne(db.client, { name: data.url.host }, function(err, ret) {
+    db.findOne('hosts', { name: data.url.host }, function(err, ret) {
 	async.waterfall([
 	    function(cb) {
+		logger.info(ret);
 		if (err == null && ret == null) {
-		    host_model.save(db.client, {name: data.url.host}, function(err, results) {
+		    db.save('hosts', {name: data.url.host}, function(err, results) {
+			log.info(results);
 			return cb(err, results, data);
 		    });
 		}
