@@ -48,8 +48,6 @@ var store = function(data, next) {
     db.findOne('hosts', { name: data.url.host }, function(err, ret) {
 	async.waterfall([
 	    function(cb) {
-		log.info(ret.name);
-		log.info(ret.id);
 		if (err == null && ret == null) {
 		    db.save('hosts', {name: data.url.host}, function(err, results) {
 			log.info(results);
