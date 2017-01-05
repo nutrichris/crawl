@@ -11,7 +11,7 @@ exports.init = function(config, next) {
     pg.defaults.ssl = true;
     log.info(process.env);
     pg.connect(process.env.DATABASE_URL, function(err, c) {
-	exports.client = c;
+	client = c;
 	return next(err);
     });
 
