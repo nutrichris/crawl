@@ -96,11 +96,15 @@ var meta = function(context, next) {
 
 var title = function(context, next) {
     var lreg = /<title(.*)>(.*)<\/title>/g;
+    var treg = /<title(.*)>(.*)<\/title>/;
 
     var m = context.body.match(lreg);
     if (m !== null) {
 	for (var i = 0; i < m.length; i++) {
-	    context.title.push(m[i]);
+	    var tm = m[i].match(treg);
+	    if (tm !== null) {
+		context.title.push(tm[2]);
+	    }
 	}
     }
 
