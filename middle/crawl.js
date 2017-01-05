@@ -67,9 +67,16 @@ var store = function(data, next) {
 		    host: host.id
 		}, function(err, ret) {
 		    if (err == null && ret == null) {
+			var title = "";
+
+			if (data.title.length > 0) {
+			    title = data.title[0];
+			}
+
 			var page = {
 			    path: data.url.path,
-			    host: host.id
+			    host: host.id,
+			    title: title
 			    };
 
 			db.save('pages', page, function(err, saved_page) {
