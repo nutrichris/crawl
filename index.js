@@ -5,6 +5,7 @@ var cookie_parser = require('cookie-parser');
 var body_parser = require('body-parser');
 var config = require('./config.json');
 var db = require('./interfaces/database.js');
+var process = require('process');
 
 log.info('Lonnie crawl 1.0');
 
@@ -23,7 +24,7 @@ async.waterfall([
 
 	app.use('/', require('./route'));
 
-	var server = app.listen(8080, function() {
+	var server = app.listen(process.env.PORT, function() {
 	    var host = server.address().address;
 	    var port = server.address().port;
 
