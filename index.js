@@ -23,7 +23,7 @@ async.waterfall([
 
 	app.use('/', require('./route'));
 
-	var server = app.listen(5000, function() {
+	var server = app.listen(80, function() {
 	    var host = server.address().address;
 	    var port = server.address().port;
 
