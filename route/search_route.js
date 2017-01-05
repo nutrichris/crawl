@@ -7,7 +7,7 @@ exports.search = function(req, res, next) {
     var query = req.query.q;
 
     if (query !== undefined && query !== null) {
-	search.search("winter", function(err, result) {
+	search.search(query, function(err, result) {
 	    if (!err) {
 		return res.status(200).send(result);
 	    } else {
