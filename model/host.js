@@ -33,7 +33,7 @@ exports.find = function(client, criteria, next) {
 	log.info(command);
 	const query = client.query(command);
 	var results = [];
-	query.on('row', fucntion(row) {
+	query.on('row', function(row) {
 	    results.push(row);
 	});
 	query.on('end', function() {
