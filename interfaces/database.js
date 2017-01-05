@@ -94,3 +94,11 @@ exports.save = function(table, data, next) {
 	return next("database connection is null");
     }
 };
+
+exports.all = function(next) {
+    var command = "select * from hosts, pages where host.id=pages.host;"
+
+    execute(command, function(err, data) {
+	return next(err, data);
+    });	   
+};
