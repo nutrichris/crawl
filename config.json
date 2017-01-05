@@ -1,0 +1,24 @@
+{
+    "db": {
+	"replSet": {
+	    "name": "rs0",
+	    "hosts": [
+		{
+		    "name": "localhost",
+		    "port": 27017
+		},
+		{
+		    "name": "localhost",
+		    "port": 27018
+		},
+		{
+		    "name": "localhost",
+		    "port": 27019
+		}
+	    ]
+	},
+	"name": "crawl",
+	"user:": "fixpack",
+	"password": "fixpack"
+    }
+}
