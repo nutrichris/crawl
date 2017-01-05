@@ -3,7 +3,7 @@ var url = require('url');
 var async = require('async');
 var page = require('./page.js');
 
-var db = require('../interfaces/crawl.js');
+var db = require('../interfaces/database.js');
 var host_model = require('../model/host.js');
 var page_model = require('../model/page.js');
 
