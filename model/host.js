@@ -44,4 +44,3 @@ exports.find = function(client, criteria, next) {
     }
 };
 
-exports.save = function(client
