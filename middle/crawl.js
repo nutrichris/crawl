@@ -45,6 +45,9 @@ var find = function(url, next) {
 
 
 var store = function(data, next) {
+    log.info('store: ');
+    log.info(data);
+
     db.findOne('hosts', { name: data.url.host }, function(err, ret) {
 	async.waterfall([
 	    function(cb) {

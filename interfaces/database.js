@@ -33,7 +33,7 @@ var execute = function(command, next) {
 };
 
 exports.findOne = function(table, criteria, next) {
-    exports.find(client, table, criteria, function(err, results) {
+    exports.find(table, criteria, function(err, results) {
 	if (!err) {
 	    if (results.length > 0) {
  		return next(null, results[0]);
