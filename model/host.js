@@ -23,7 +23,7 @@ exports.find = function(client, criteria, next) {
 	for (var key in criteria) {
 	    if (criteria.hasOwnProperty(key)) {
 		var obj = criteria[key];
-		command += key + "=\"" + obj + "\"";
+		command += key + "='" + obj + "'";
 		
 		command += " AND ";
 	    }
@@ -43,3 +43,5 @@ exports.find = function(client, criteria, next) {
 	return next("database connection is null");
     }
 };
+
+exports.save = function(client
