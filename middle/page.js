@@ -103,6 +103,7 @@ var title = function(context, next) {
 	for (var i = 0; i < m.length; i++) {
 	    var tm = m[i].match(treg);
 	    if (tm !== null) {
+		log.info(tm);
 		context.title.push(tm[2]);
 	    }
 	}
