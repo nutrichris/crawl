@@ -69,7 +69,7 @@ var store = function(data, next) {
 		    if (err == null && ret == null) {
 			var page = {
 			    path: data.url.path,
-			    host: host._id
+			    host: host.id
 			    };
 
 			db.save('pages', page, function(err, saved_page) {
