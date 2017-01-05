@@ -61,7 +61,7 @@ exports.save = function(client, data, next) {
 
 	for (var key in data) {
 	    if (data.hasOwnProperty(key)) {
-		var obj = criteria[key];
+		var obj = data[key];
 		command += key + ", ";
 		values += "'" + obj + "', "; 
 	    }
