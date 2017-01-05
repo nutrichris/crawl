@@ -62,8 +62,6 @@ var store = function(data, next) {
 		}		
 	    },
 	    function(host, data, cb) {
-		return cb(null);
-
 		db.findOne('pages', {
 		    path: data.url.path,
 		    host: host.id
