@@ -20,7 +20,7 @@ try {
 	log.info("Page model registered in elasticsearch");
     });
 } catch(err) {
-    logger.error(err);
+    log.error(err);
 }
 
 module.exports = Page;

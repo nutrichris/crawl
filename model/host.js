@@ -13,7 +13,7 @@ try {
 	log.info("Host model registered in elasticsearch");
     });
 } catch(err) {
-    logger.error(err);
+    log.error(err);
 }
 
 module.exports = Host;
