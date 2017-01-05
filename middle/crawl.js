@@ -65,10 +65,10 @@ var store = function(data, next) {
 	    },
 	    function(host, data, cb) {
 		return cb(null);
-/*
-		page_model.findOne({
+
+		db.findOne('pages', {
 		    path: data.url.path,
-		    host: host._id
+		    host: host.id
 		}, function(err, ret) {
 		    if (err == null && ret == null) {
 			var page = {
@@ -76,18 +76,16 @@ var store = function(data, next) {
 			    host: host._id
 			    };
 
-			var pp = new page_model(page);
-			pp.save(function(err, saved_page) {
+			db.save('pages', page, function(err, saved_page) {
 			    return cb(err);
 			});
-
 		    } else if (err == null && ret != null) {
 			return cb(null);
 		    } else {
 			return cb(err);			
 		    }
 		});
-*/
+
 	    }
 	], function(err) {
 	    return next(err);
