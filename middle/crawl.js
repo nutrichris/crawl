@@ -3,6 +3,7 @@ var url = require('url');
 var async = require('async');
 var page = require('./page.js');
 
+var db = require('../interfaces/crawl.js');
 var host_model = require('../model/host.js');
 var page_model = require('../model/page.js');
 
@@ -17,7 +18,7 @@ var blackHosts = ["www.facebook.com", 'plus.google.com'];
 
 
 var find = function(url, next) {
-    host_model.findOne({ name: url.host }, function(err, ret) {
+    host_model.findOne(db.client, { name: url.host }, function(err, ret) {
 	if (!err) {
 	    if (ret) {
 		page_model.findOne({
@@ -46,7 +47,7 @@ var find = function(url, next) {
 
 
 var store = function(data, next) {
-    host_model.findOne({ name: data.url.host }, function(err, ret) {
+    host_model.findOne(db.client, { name: data.url.host }, function(err, ret) {
 	async.waterfall([
 	    function(cb) {
 		if (err == null && ret == null) {
