@@ -96,7 +96,7 @@ exports.save = function(table, data, next) {
 };
 
 exports.all = function(next) {
-    var command = "select * from hosts, pages where host.id=pages.host;"
+    var command = "select * from hosts, pages where hosts.id=pages.host;"
 
     execute(command, function(err, data) {
 	return next(err, data);
